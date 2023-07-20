@@ -59,7 +59,7 @@
 }
 .Task{
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-evenly;
   border: none;
   width: 12em;
@@ -117,7 +117,7 @@
 }
 .Timer p{
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   font-size: 5em;
   font-weight: 600;
@@ -181,7 +181,7 @@
 }
 .CustomButtons{
   display: flex;
-  align-items: start;
+  align-items:flex-start;
   width: 15em;
   margin-top: 2em;
 }
