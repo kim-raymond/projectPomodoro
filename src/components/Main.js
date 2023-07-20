@@ -89,7 +89,7 @@ const Main =()=>{
         }
     },[Minute,breakSesh]);
 
-    const [Message,setMessage] = useState();
+    const [Message,setMessage] = useState("We do it to get the a crown that will last forever...");
 
     const Bell = ()=>{
         audio1.play()

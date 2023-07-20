@@ -158,6 +158,7 @@
   color: rgb(112, 112, 112);
   width: 17em;
   margin-top: 1.5em;
+  transition: 0.3s ease-in-out;
 }
 .tmrbutton{
   position: absolute;
@@ -181,7 +182,7 @@
 }
 .CustomButtons{
   display: flex;
-  align-items:flex-start;
+  align-items: flex-start;
   width: 15em;
   margin-top: 2em;
 }
