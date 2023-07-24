@@ -69,11 +69,22 @@ const BackTrack = ({audioOptn,setAudioOptn,setOptions}) =>{
 
         if(timePlayed>10){
             setDidClick(prevState => !prevState);
-            pausePrevAudio();
+            // pausePrevAudio();
+            if(prevAudio!== undefined){
+                prevAudio.currentTime=0;
+                prevAudio.pause();
+                setTimePlayed(0)
+                if(play1){
+                    setPLay1(false)
+                }
+                else{
+                    setPLay2(false)
+                }
+            }
         }
         return()=> {
         };
-    }, [timePlayed]);
+    }, [timePlayed,prevAudio,play1]);
 
     const [select1,setSelect1]=useState(false);
     const [select2,setSelect2]=useState(false);
