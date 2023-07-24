@@ -93,7 +93,7 @@ const BackTrack = ({audioOptn,setAudioOptn,setOptions}) =>{
         <div className="BackTrack">
             <h2>Background</h2>
 
-            <div className="SoundContainer" id="0">
+            <div className="SoundContainer">
                 <button type="button" id="0" onClick={handlePrev} className="SoundPrev">
                     
                 {play1 ? <i className="fa-solid fa-pause"></i> :<i className="fa-solid fa-play"></i>}
@@ -104,7 +104,7 @@ const BackTrack = ({audioOptn,setAudioOptn,setOptions}) =>{
                 </button>
             </div>
 
-            <div className="SoundContainer" id="1">
+            <div className="SoundContainer">
                 <button  type="button" id="1" onClick={handlePrev} className="SoundPrev">
                 {play2 ? <i className="fa-solid fa-pause"></i> :<i className="fa-solid fa-play"></i>}
                 </button>

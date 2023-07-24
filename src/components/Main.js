@@ -73,36 +73,37 @@ const Main =({audioOptn,options})=>{
                 setMinute(5);
                 setDuration(100)
                 setBreakSesh(true);
-                Bell()
-                stopFocus()
+                audio1.play()
+                audioOptn[options].pause()
+                audioOptn[options].currentTime = 0;
             }
             else{
                 setMinute(25)
                 setDuration(100)
                 setBreakSesh(false);
-                Bell()
-                Focus()
+                audio1.play()
+                audioOptn[options].play()
             }
         }
 
         return()=>{
         }
-    },[Minute,breakSesh]);
+    },[Minute,breakSesh,audioOptn,options]);
 
     const [Message,setMessage] = useState("We do it to get the a crown that will last forever...");
 
-    const Bell = ()=>{
-        audio1.play()
-    }
+    // const Bell = ()=>{
+    //     audio1.play()
+    // }
 
     const Focus = () =>{
         audioOptn[options].play()
     }
 
-    const stopFocus= ()=>{
-        audioOptn[options].pause()
-        audioOptn[options].currentTime = 0;
-    }
+    // const stopFocus= ()=>{
+    //     audioOptn[options].pause()
+    //     audioOptn[options].currentTime = 0;
+    // }
     const pauseFocus= ()=>{
         audioOptn[options].pause()
     }
