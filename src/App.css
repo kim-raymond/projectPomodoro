@@ -2,31 +2,79 @@
   text-align: center;
 }
 .appContainer{
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "SideBar Timer Timer Timer Timer";
+  column-gap: 1em;
   height: 97vh;
-  padding: .7em;
+  padding: .5em;
   font-family: 'Poppins', sans-serif;
 }
-.TodoContainer{
-  /* border: 1px solid black; */
+/* Start of To do Component....................... */
+.SideBarWrapper{
+  grid-area: SideBar;
+  display: grid;
   border-radius: 15px;
-  padding:  0 1em;
+  grid-template-columns: auto;
+  grid-template-rows:1fr 1fr 1fr;
   box-shadow: 1px 1px 4px 0px rgb(197, 197, 197);
-  margin-right: 0.7em ;
+}
+.BackTrack{
+  grid-column: 1 / 2;
+  grid-row: 3 / -1;
+  padding: 1em;
+  /* border: 1px solid black; */
+}
+.BackTrack h2{
+  margin-bottom: 0.7em;
+  color: rgb(114, 114, 114);
+  /* border: 1px solid black; */
+}
+.SoundContainer{
+  margin: 0.5em 0;
+  padding: 0;
+  display: flex;
+  height: 2.5em;
+  align-items: center;
+  position: relative;
+  /* border: 1px solid black; */
+}
+.SoundContainer P{
+  margin: 0 1em;
+}
+.SoundPrev{
+  height: 2em;
+  border: none;
+  height: 3em;
+  width: 3em;
+  border-radius: .5em;
+  /* position: absolute; */
+}
+.SoundPrev .fa-play{
+  font-size: 14px;
+}
+.SoundPrev .fa-pause{
+  font-size: 14px;
+
+}
+.select{
+  border: none;
+  width: 2em;
+  height: 2em;
+  background:transparent ;
+  position: absolute;
+  right: 1em;
+}
+.TodoContainer{
+  grid-column: 1 / 2;
+  grid-row: 1/ span 2;
+  padding:  0 1em;
+  border: 1px slod black;
 }
 .TodoContainer h2{
   color: rgb(126, 126, 126);
-  margin: 0.5em 0;
-}
-.MainWrapper{
-  position: relative;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
-  box-shadow: 1px 1px 4px 0px rgb(197, 197, 197);
 }
 .logo{
   position: absolute;
@@ -43,10 +91,16 @@
 .input{
   background-color: rgb(238, 238, 238);
   font-family: 'Poppins', sans-serif;
-  padding: 0;
+  padding: 0 0.5em;
   border: none;
-  width: 14em;
+  width: 13em;
   height: 3em;
+  outline:none ;
+  transition: .3s ease-in-out;
+}
+.input:focus{
+  background-color: rgb(248, 246, 246);
+  border: none;
 }
 
 .add{
@@ -111,6 +165,18 @@
 }
 .fa-trash:hover{
   color: grey;
+}
+/* start of Timer Container ...........................*/
+.MainWrapper{
+  grid-area: Timer;
+  position: relative;
+  /* width: 80%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 1px 1px 4px 0px rgb(197, 197, 197);
 }
 .Timer{
   position: relative;

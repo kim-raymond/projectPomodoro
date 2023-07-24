@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 var audio1 = new Audio("/Desk Bell.mp3");
-var audio2 = new Audio('/Chill Christian R&B_Lofi Playlist.mp3')
+// var audio2 = new Audio('/Chill Christian R&B_Lofi Playlist.mp3')
 
 
-const Main =()=>{
+const Main =({audioOptn,options})=>{
     const [Minute,setMinute] = useState(25);
     const [Second,setSecond] = useState(0);
 
@@ -95,21 +95,16 @@ const Main =()=>{
         audio1.play()
     }
 
-    // const stopBreak= ()=>{
-    //     audio1.pause()
-    //     audio1.currentTime = 0;
-    // }
-
     const Focus = () =>{
-        audio2.play()
+        audioOptn[options].play()
     }
 
     const stopFocus= ()=>{
-        audio2.pause()
-        audio2.currentTime = 0;
+        audioOptn[options].pause()
+        audioOptn[options].currentTime = 0;
     }
     const pauseFocus= ()=>{
-        audio2.pause()
+        audioOptn[options].pause()
     }
     const updateStyle = {
         width:`${duration}%`,
@@ -125,7 +120,6 @@ const Main =()=>{
             </div>
             <button type="button" onClick={handlePlay} className="tmrbutton">
             {didPlay ? <i className="fa-solid fa-pause"></i> :<i className="fa-solid fa-play"></i>}
-            
             </button>
             <div className="CustomButtons">
                 <button className="Adjust">ADJUST</button>
