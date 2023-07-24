@@ -104,6 +104,7 @@ const Main =({audioOptn,options})=>{
     //     audioOptn[options].pause()
     //     audioOptn[options].currentTime = 0;
     // }
+    
     const pauseFocus= ()=>{
         audioOptn[options].pause()
     }
