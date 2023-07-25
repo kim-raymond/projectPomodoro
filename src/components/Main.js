@@ -35,6 +35,7 @@ const Main =({audioOptn,options})=>{
         stopFocus()
     }
 
+    
     useEffect(()=> {
 
         let intervalId
@@ -80,7 +81,7 @@ const Main =({audioOptn,options})=>{
                 setMinute(5);
                 setDuration(100)
                 setBreakSesh(true);
-                audio1.play()
+                Bell()
                 audioOptn[options].pause()
                 audioOptn[options].currentTime = 0;
             }
@@ -99,9 +100,9 @@ const Main =({audioOptn,options})=>{
 
     const [Message,setMessage] = useState("We do it to get the a crown that will last forever...");
 
-    // const Bell = ()=>{
-    //     audio1.play()
-    // }
+    const Bell = ()=>{
+        audio1.play()
+    }
 
     const Focus = () =>{
         audioOptn[options].play()
