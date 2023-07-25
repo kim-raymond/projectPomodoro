@@ -95,7 +95,6 @@ const BackTrack = ({audioOptn,setAudioOptn,setOptions}) =>{
 
             <div className="SoundContainer" id="0">
                 <button type="button" id="0" onClick={handlePrev} className="SoundPrev">
-                    
                 {play1 ? <i className="fa-solid fa-pause"></i> :<i className="fa-solid fa-play"></i>}
                 </button>
                 <p>Christian Chill</p>

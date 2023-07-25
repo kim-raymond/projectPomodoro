@@ -28,6 +28,13 @@ const Main =({audioOptn,options})=>{
         }
     }
 
+    const handleRestart =()=>{
+        setDidPLay(false);
+        setMinute(25)
+        setSecond(0)
+        stopFocus()
+    }
+
     useEffect(()=> {
 
         let intervalId
@@ -100,10 +107,10 @@ const Main =({audioOptn,options})=>{
         audioOptn[options].play()
     }
 
-    // const stopFocus= ()=>{
-    //     audioOptn[options].pause()
-    //     audioOptn[options].currentTime = 0;
-    // }
+    const stopFocus= ()=>{
+        audioOptn[options].pause()
+        audioOptn[options].currentTime = 0;
+    }
     
     const pauseFocus= ()=>{
         audioOptn[options].pause()
@@ -125,7 +132,7 @@ const Main =({audioOptn,options})=>{
             </button>
             <div className="CustomButtons">
                 <button className="Adjust">ADJUST</button>
-                <button className="Restart">RESTART</button>
+                <button className="Restart" onClick={handleRestart}>RESTART</button>
             </div>
         </div>
         

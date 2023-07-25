@@ -38,7 +38,6 @@ function App() {
 
     <div className='appContainer'>
  
- {/* // start of SideBar component */}
     <div className='SideBarWrapper'>
     <div className='TodoContainer'>
       <h2>Task</h2>
@@ -73,8 +72,6 @@ function App() {
     setOptions={setOptions}/>
     </div>
     
-    {/* // end of SideBar component */}
-
     {<Main
     audioOptn={audioOptn}
     options={options}
