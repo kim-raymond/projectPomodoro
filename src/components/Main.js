@@ -123,6 +123,10 @@ const Main =({audioOptn,options})=>{
     return(
         <div className="MainWrapper">
             <h2 className="logo">Basta<span>Pomodoro</span></h2>
+            <div className="ToggleContainer">
+                <div className="toggle"><div className="toggleCircle"></div></div>
+                <p>Mode</p>
+            </div>
             <div className="Timer">
                 <p>{Minute}:{InSecond}</p>
                 <div className="Line" style={updateStyle} ></div>
