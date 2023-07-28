@@ -324,12 +324,15 @@ body{
   background: rgb(187, 187, 187);
   border-radius: 2em;
   margin-right: 1em;
+  position: relative;
 }
 .toggleCircle{
   height: 1em;
   width: 1em;
   border-radius: 50%;
   background-color: rgb(49, 49, 49);
+  right: 1em;
+  position: absolute;
 }
 
 
@@ -342,6 +345,9 @@ body{
   }
   .MainWrapper{
     width: 100%;
+  }
+  .ToggleContainer{
+    display: none;
   }
 }
 @media (max-width:500px){

@@ -133,7 +133,7 @@ const Main =({audioOptn,options})=>{
                 <div className="Message">{Message}</div>
             </div>
             <button type="button" onClick={handlePlay} className="tmrbutton">
-            {didPlay ? <i className="fa-solid fa-pause"></i> :<i className="fa-solid fa-play"></i>}
+            {didPlay ? <i className="fa-solid fa-pause"></i>:<i className="fa-solid fa-play"></i>}
             </button>
             <div className="CustomButtons">
                 <button className="Adjust">ADJUST</button>
