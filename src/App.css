@@ -3,17 +3,18 @@
 }
 body{
   background: rgb(243, 243, 243);
-  padding: 0;
+  padding: 0.7em;
 
 }
 .appContainer{
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas: 
   "SideBar Timer Timer Timer Timer";
   column-gap: 1em;
-  height: 93vh;
+  height: 97vh;
   padding: 0.3em;
   font-family: 'Poppins', sans-serif;
 }
@@ -74,14 +75,26 @@ body{
   position: absolute;
   right: 1em;
 }
+.uncheck{
+  color: rgb(206, 206, 206);
+}
 .TodoContainer{
   grid-column: 1 / 2;
   grid-row: 1/ span 2;
   padding:  0 1em;
   border: 1px slod black;
 }
-.TodoContainer h2{
+.todo{
+  position: relative;
+  padding: 0;
+  display: flex;
+}
+.todo h2{
   color: rgb(126, 126, 126);
+  margin: 0.5em 0;
+}
+.fa-xmark{
+  display: none;
 }
 .logo{
   position: absolute;
@@ -186,6 +199,16 @@ body{
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px, rgb(255, 255, 255) 2px 2px 5px inset;
   background: rgb(252, 252, 252);
 }
+.fa-bars{
+  display: none;
+  position: absolute;
+  top: 1.8em;
+  left: 1.5em;
+  color: rgb(179, 179, 179);
+}
+#checkbox{
+  display: none;
+}
 .Timer{
   position: relative;
 }
@@ -233,7 +256,9 @@ body{
   width: 17em;
   margin-top: 1.5em;
   transition: 0.3s ease-in-out;
+  position: relative;
 }
+
 .tmrbutton{
   position: absolute;
   height: 6em;
@@ -338,7 +363,32 @@ body{
 
 @media (max-width: 1320px) {
   .SideBarWrapper{
-    display: none;
+    display: grid;
+    position: absolute;
+    z-index: 2;
+    /* left: 0; */
+    height: 98%;
+    border-radius: 0.5em;
+    transition: 0.3s ease-in-out;
+  }
+  .fa-bars{
+    display: block;
+    position: absolute;
+    top: 1.8em;
+    left: 1.5em;
+    color: rgb(179, 179, 179);
+  }
+  /* #checkbox{
+    display: ;
+  } */
+  #checkbox:checked ~ .SideBarWrapper {
+    left: 1em;
+  }
+  .fa-xmark{
+    display: block;
+    position: absolute;
+    right: 0;
+    top:1.2em;
   }
   .appContainer{
     display: flex;

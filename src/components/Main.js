@@ -1,26 +1,29 @@
 import { useEffect, useState } from "react";
-
+import Message from './message';
 var audio1 = new Audio("/Desk Bell.mp3");
-// var audio2 = new Audio('/Chill Christian R&B_Lofi Playlist.mp3')
 
-
-const Main =({audioOptn,options})=>{
+const Main =({audioOptn,options,didPlay,setDidPLay,handleSlide})=>{
+    // const {handleSlide} = handleSlide
     const [Minute,setMinute] = useState(25);
-    const [Second,setSecond] = useState(0);
+    const [Second,setSecond] = useState();
 
     const [InSecond,setInSecond] = useState('00')
-    const [didPlay,setDidPLay] = useState(false)
 
     const [breakSesh,setBreakSesh] = useState(false)
     const [duration, setDuration] =useState(100);
+    const [firstPLay,setFirstPlay] =useState(false)
     
     const handlePlay =()=>{
         setDidPLay((prevState) => !prevState);
-
+        console.log(didPlay);
         if(!didPlay){
             if(!breakSesh){
                 Focus()
-                setMessage("Whatever you do, work heartily, as for the Lord and not for men.")
+                if(!firstPLay){
+                    setSecond(59);
+                    setMinute(24);
+                    setFirstPlay(prev=>!prev);
+                }
             }
         }
         else{
@@ -29,36 +32,40 @@ const Main =({audioOptn,options})=>{
     }
 
     const handleRestart =()=>{
+        console.log(didPlay);
         setDidPLay(false);
+        setFirstPlay(false)
+        setDuration(100)
         setMinute(25)
-        setSecond(0)
+        setSecond()
         stopFocus()
     }
 
     
     useEffect(()=> {
-
         let intervalId
-
         if(didPlay){
         intervalId = setInterval(() => {
-        setSecond(prevSecond => prevSecond + 1)
-        }, 1000);
+        setSecond(prevSecond => prevSecond - 1)
+        }, 100);
         }
 
         return()=> clearInterval(intervalId);
     }, [didPlay]);
 
-    useEffect(()=> {
-        if(Second<10){
-            setInSecond(`0${Second}`)
-        }
 
-        else{
-        setInSecond(`${Second}`)
-            if(Second>59){
+
+    useEffect(()=> {
+
+        if(Second>=10){
+            setInSecond(`${Second}`)  
+            }
+
+        else if(Second<=10){
+            setInSecond(`0${Second}`)
+            if(Second<=0){
+                setSecond(59)
                 setMinute(prevMin => prevMin -1)
-                setSecond(0)
                 if(!breakSesh){
                     setDuration(prevVal=>prevVal -4)
                 }
@@ -67,15 +74,16 @@ const Main =({audioOptn,options})=>{
                 }
             }
         }
-        
-        
+        else{
+            setInSecond('00')
+        }
         return()=>{
             setInSecond()
         }
-    }, [Second,breakSesh]);
+    
+        }, [Second,breakSesh]);
 
     useEffect(()=>{
-
         if(Minute===0){
             if(!breakSesh){
                 setMinute(5);
@@ -91,6 +99,8 @@ const Main =({audioOptn,options})=>{
                 setBreakSesh(false);
                 audio1.play()
                 audioOptn[options].play()
+                setMinute(24)
+                setSecond(59)
             }
         }
 
@@ -98,7 +108,6 @@ const Main =({audioOptn,options})=>{
         }
     },[Minute,breakSesh,audioOptn,options]);
 
-    const [Message,setMessage] = useState("We do it to get the a crown that will last forever...");
 
     const Bell = ()=>{
         audio1.play()
@@ -120,8 +129,15 @@ const Main =({audioOptn,options})=>{
         width:`${duration}%`,
     };
 
+
+
     return(
         <div className="MainWrapper">
+            <label for="checkbox" class="checkbox-label">
+            <input type="checkbox" onClick={handleSlide} id="checkbox"/>
+            <i className="fa-solid fa-bars"></i>
+            </label>
+            
             <h2 className="logo">Basta<span>Pomodoro</span></h2>
             <div className="ToggleContainer">
                 <div className="toggle"><div className="toggleCircle"></div></div>
@@ -130,7 +146,7 @@ const Main =({audioOptn,options})=>{
             <div className="Timer">
                 <p>{Minute}:{InSecond}</p>
                 <div className="Line" style={updateStyle} ></div>
-                <div className="Message">{Message}</div>
+                <div className="Message">{<Message/>}</div>
             </div>
             <button type="button" onClick={handlePlay} className="tmrbutton">
             {didPlay ? <i className="fa-solid fa-pause"></i>:<i className="fa-solid fa-play"></i>}

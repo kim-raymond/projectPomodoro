@@ -1,6 +1,6 @@
 import { useState, useEffect} from "react";
 
-const BackTrack = ({audioOptn,setAudioOptn,setOptions}) =>{
+    const BackTrack = ({audioOptn,options,setAudioOptn,setOptions,setDidPLay}) =>{
 
     const [prevAudio, setPrevAudio] = useState();
     const [didClick,setDidClick] = useState(false);
@@ -43,10 +43,16 @@ const BackTrack = ({audioOptn,setAudioOptn,setOptions}) =>{
         if(choice==='0'){
             setSelect1(prev=>!prev)
             setSelect2(false)
+            audioOptn[options].pause()
+            audioOptn[options].currentTime = 0;
+            setDidPLay(false)
         }
         else{
             setSelect2(prev=>!prev)
             setSelect1(false)
+            audioOptn[options].pause()
+            audioOptn[options].currentTime = 0;
+            setDidPLay(false)
         }
     }
     useEffect(()=> {
@@ -99,7 +105,8 @@ const BackTrack = ({audioOptn,setAudioOptn,setOptions}) =>{
                 </button>
                 <p>Christian Chill</p>
                 <button id="0" type="button" className="select" onClick={handleCheck}>
-                    {select1? <i class="fa-solid fa-check"></i>:<span></span>}
+
+                {select1? <i className="fa-solid fa-check"></i>:<span id="0"><i className="fa-solid fa-check uncheck"></i></span>}
                 </button>
             </div>
 
@@ -109,7 +116,9 @@ const BackTrack = ({audioOptn,setAudioOptn,setOptions}) =>{
                 </button>
                 <p>Christian R&B</p>
                 <button id="1" type="button" className="select" onClick={handleCheck}>
-                    {select2? <i class="fa-solid fa-check"></i>:<span></span>}
+
+                {select2? <i className="fa-solid fa-check"></i>:<span id="1"><i className="fa-solid fa-check uncheck"></i></span>}
+                    
                 </button>
             </div>
 

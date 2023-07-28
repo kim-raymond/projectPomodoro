@@ -22,6 +22,8 @@ function App() {
   const [addedTask,setAddedTask] = useState([])
   const [finishedTask, setFinishedTask] = useState([])
   const [options,setOptions] =useState(0);
+  const [didPlay,setDidPLay] = useState(false)
+
 
   const displayTask = (event)=>{
     event.preventDefault();
@@ -33,14 +35,27 @@ function App() {
   const clearPlaceholder =()=>{
     setPlaceHolder('')
   }
-
+  const [clicked,setClicked] = useState(false);
+  const handleSlide =()=>{
+    setClicked(prev=>!prev)
+  }
+  const slide = {
+    left:'0'
+  }
+  const hide={
+    left:'-17em'
+  }
   return (
 
     <div className='appContainer'>
  
-    <div className='SideBarWrapper'>
+    <div className='SideBarWrapper' 
+    style={clicked ? slide:hide}
+    >
     <div className='TodoContainer'>
-      <h2>Task</h2>
+      
+      <div className='todo'><h2>Task</h2><i onClick={handleSlide} className="fa-solid fa-xmark"></i></div>
+      
       <form onSubmit={displayTask}>
         <button type='submit' className='add' onClick={displayTask}>+</button>
         <input 
@@ -69,13 +84,18 @@ function App() {
     audioOptn={audioOptn}
     setAudioOptn={setAudioOptn}
     options={options}
-    setOptions={setOptions}/>
+    setOptions={setOptions}
+    didPlay={didPlay}
+    setDidPLay={setDidPLay}/>
     </div>
     
     {<Main
     audioOptn={audioOptn}
     options={options}
-    setOptions={setOptions}/>}
+    setOptions={setOptions}
+    didPlay={didPlay}
+    setDidPLay={setDidPLay}
+    handleSlide={handleSlide}/>}
 
     </div>
 
