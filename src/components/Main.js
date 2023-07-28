@@ -47,7 +47,7 @@ const Main =({audioOptn,options,didPlay,setDidPLay,handleSlide})=>{
         if(didPlay){
         intervalId = setInterval(() => {
         setSecond(prevSecond => prevSecond - 1)
-        }, 100);
+        }, 1000);
         }
 
         return()=> clearInterval(intervalId);
