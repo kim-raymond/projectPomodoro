@@ -138,7 +138,7 @@ const Main =({audioOptn,options,didPlay,setDidPLay,handleSlide})=>{
             <i className="fa-solid fa-bars"></i>
             </label>
             
-            <h2 className="logo">Basta<span>Pomodoro</span></h2>
+            <h2 className="logo">for<span>HIM</span></h2>
             <div className="ToggleContainer">
                 <div className="toggle"><div className="toggleCircle"></div></div>
                 <p>Mode</p>
